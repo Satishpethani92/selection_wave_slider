@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:slection_wave_slider/src/wave_slider.dart';
+import 'package:selection_wave_slider/src/wave_slider.dart';
 
 class WaveSliderWithDragPoint extends StatefulWidget {
   final List<String> optionToChoose;

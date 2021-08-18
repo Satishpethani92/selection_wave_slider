@@ -4,7 +4,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:slection_wave_slider/src/wave_painter.dart';
+import 'package:selection_wave_slider/src/wave_painter.dart';
 
 class WaveSlider extends StatefulWidget {
   /// Creates a wave slider.

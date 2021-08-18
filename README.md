@@ -4,7 +4,7 @@ Flutter slider selection with wave effect.
 <img height="240px" src="https://media.giphy.com/media/TcAhg5Phg5tAxoYP4C/giphy.gif">
 
 <br>
-A slection_wave_slider in Flutter is a material design widget utilized for choosing a scope of values. It is an information widget where we can set a range of values by dragging or pushing the ideal position. and also can draggable possition to the bootom. 
+A selection_wave_slider in Flutter is a material design widget utilized for choosing a scope of values. It is an information widget where we can set a range of values by dragging or pushing the ideal position. and also can draggable possition to the bootom.
 Typically, we utilize the slider widget for changing a value. Along these lines, it is needed to store the value in a variable. This widget has a slider class that requires the onChanged() work. This capacity will be called at whatever point we change the slider position.
 <br>
 
@@ -14,7 +14,7 @@ Add dependancy to your pubspec.yaml
 ```
 dependencies:
   ...
-  Slider_dependancy: any
+  selection_wave_slider: any
 ```
 
 

@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:slection_wave_slider/src/wave_slider.dart';
+import 'package:selection_wave_slider/src/wave_slider.dart';
 import 'package:path_drawing/path_drawing.dart';
 
 class WavePainter extends CustomPainter {

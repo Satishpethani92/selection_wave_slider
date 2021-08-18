@@ -1,7 +1,7 @@
-name: slection_wave_slider
-description: A slection_wave_slider in Flutter is a material design widget utilized for choosing a scope of values. It is an information widget where we can set a range of values by dragging or pushing the ideal position. and also can draggable possition to the bootom.  Typically, we utilize the slider widget for changing a value. Along these lines, it is needed to store the value in a variable. This widget has a slider class that requires the onChanged() work. This capacity will be called at whatever point we change the slider position.
+name: selection_wave_slider
+description: A selection_wave_slider in Flutter is a material design widget utilized for choosing a scope of values.
 version: 0.0.1
-homepage:
+homepage: https://github.com/Satishpethani92/selection_wave_slider
 
 environment:
   sdk: ">=2.12.0 <3.0.0"

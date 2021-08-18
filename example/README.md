@@ -1,6 +1,6 @@
 # example
 
-slection_wave_slider example
+selection_wave_slider example
 
 ## Getting Started
 
