@@ -87,7 +87,7 @@ class _WaveSliderWithDragPointState extends State<WaveSliderWithDragPoint> {
           height: widget.sliderHeight!,
           width: width,
           child: Stack(
-            overflow: Overflow.visible,
+            // overflow: Overflow.visible,
             children: [
               WaveSlider(
                 key: _key,

@@ -43,6 +43,7 @@ class WavePainter extends CustomPainter {
   final List<String> optionToChoose;
   final SliderState sliderState;
   final double toolTipWidth;
+
   // final bool displayTrackball;
 
   final Color color;
@@ -101,10 +102,8 @@ class WavePainter extends CustomPainter {
     int dataLength = optionToChoose.length + 1;
     double positionY = size.height / 2;
     for (int i = 1; i < dataLength; i++) {
-      canvas.drawCircle(Offset((size.width / dataLength) * i, positionY),
-          anchorRadius, fillPainter);
-      canvas.drawCircle(Offset((size.width / dataLength) * i, positionY),
-          anchorRadius - 1, fillPainter2);
+      canvas.drawCircle(Offset((size.width / dataLength) * i, positionY), anchorRadius, fillPainter);
+      canvas.drawCircle(Offset((size.width / dataLength) * i, positionY), anchorRadius - 1, fillPainter2);
     }
   }
 
@@ -124,35 +123,21 @@ class WavePainter extends CustomPainter {
     _paintTrackball(canvas, size, waveCurve: line);
   }
 
-  void _paintWaveLine(
-      Canvas canvas, Size size, WaveCurveDefinitions waveCurve) {
+  void _paintWaveLine(Canvas canvas, Size size, WaveCurveDefinitions waveCurve) {
     double positionY = size.height / 2;
     final Path path = Path();
 
     path.moveTo(anchorRadius, positionY);
     path.lineTo(waveCurve.startOfBezier, positionY);
-    path.cubicTo(
-        waveCurve.leftControlPoint1,
-        positionY,
-        waveCurve.leftControlPoint2,
-        waveCurve.controlHeight,
-        waveCurve.centerPoint,
-        waveCurve.controlHeight);
-    path.cubicTo(
-        waveCurve.rightControlPoint1,
-        waveCurve.controlHeight,
-        waveCurve.rightControlPoint2,
-        positionY,
-        waveCurve.endOfBezier,
-        positionY);
+    path.cubicTo(waveCurve.leftControlPoint1, positionY, waveCurve.leftControlPoint2, waveCurve.controlHeight, waveCurve.centerPoint, waveCurve.controlHeight);
+    path.cubicTo(waveCurve.rightControlPoint1, waveCurve.controlHeight, waveCurve.rightControlPoint2, positionY, waveCurve.endOfBezier, positionY);
     path.lineTo(size.width, positionY);
 
     canvas.drawPath(path, wavePainter);
     _paintAnchors(canvas, size);
   }
 
-  void _paintTrackball(Canvas canvas, Size size,
-      {required WaveCurveDefinitions waveCurve}) {
+  void _paintTrackball(Canvas canvas, Size size, {required WaveCurveDefinitions waveCurve}) {
     double indicatorSize = minWaveHeight;
     double centerPoint = sliderPosition, controlHeight = size.height;
     centerPoint = (centerPoint > size.width) ? size.width : centerPoint;
@@ -172,39 +157,19 @@ class WavePainter extends CustomPainter {
     TextPainter? tp2;
     if (SliderState.sliding == sliderState) {
       TextSpan span = new TextSpan(
-          style: toolTipTextStyle.apply(
-              color: toolTipTextStyle.color != null
-                  ? toolTipTextStyle.color!.withOpacity(prevText!.opacity)
-                  : Colors.black.withOpacity(prevText!.opacity)),
+          style: toolTipTextStyle.apply(color: toolTipTextStyle.color != null ? toolTipTextStyle.color!.withOpacity(prevText!.opacity) : Colors.black.withOpacity(prevText!.opacity)),
           text: prevText!.text);
-      tp = new TextPainter(
-          text: span,
-          textAlign: TextAlign.center,
-          textDirection: TextDirection.ltr);
+      tp = new TextPainter(text: span, textAlign: TextAlign.center, textDirection: TextDirection.ltr);
       tp.layout();
 
       TextSpan span2 = new TextSpan(
-          style: toolTipTextStyle.apply(
-              color: toolTipTextStyle.color != null
-                  ? toolTipTextStyle.color!.withOpacity(nextText!.opacity)
-                  : Colors.black.withOpacity(nextText!.opacity)),
+          style: toolTipTextStyle.apply(color: toolTipTextStyle.color != null ? toolTipTextStyle.color!.withOpacity(nextText!.opacity) : Colors.black.withOpacity(nextText!.opacity)),
           text: nextText!.text);
-      tp2 = new TextPainter(
-          text: span2,
-          textAlign: TextAlign.center,
-          textDirection: TextDirection.ltr);
+      tp2 = new TextPainter(text: span2, textAlign: TextAlign.center, textDirection: TextDirection.ltr);
       tp2.layout();
     } else {
-      TextSpan span = new TextSpan(
-          style: toolTipTextStyle.apply(
-              color: toolTipTextStyle.color != null
-                  ? toolTipTextStyle.color
-                  : Colors.black),
-          text: selectedText);
-      tp = new TextPainter(
-          text: span,
-          textAlign: TextAlign.center,
-          textDirection: TextDirection.ltr);
+      TextSpan span = new TextSpan(style: toolTipTextStyle.apply(color: toolTipTextStyle.color != null ? toolTipTextStyle.color : Colors.black), text: selectedText);
+      tp = new TextPainter(text: span, textAlign: TextAlign.center, textDirection: TextDirection.ltr);
       tp.layout();
     }
     if (tp2 != null) {
@@ -248,15 +213,9 @@ class WavePainter extends CustomPainter {
               ),
               Radius.circular(8.0))),
         paint2);
-    tp.paint(
-        canvas,
-        new Offset(centerPoint - (tp.size.width) / 2,
-            -40 + (15 - (tp.size.height) / 2)));
+    tp.paint(canvas, new Offset(centerPoint - (tp.size.width) / 2, -40 + (15 - (tp.size.height) / 2)));
     if (tp2 != null) {
-      tp2.paint(
-          canvas,
-          new Offset(centerPoint - (tp2.size.width) / 2,
-              -40 + (15 - (tp2.size.height) / 2)));
+      tp2.paint(canvas, new Offset(centerPoint - (tp2.size.width) / 2, -40 + (15 - (tp2.size.height) / 2)));
     }
   }
 
@@ -275,8 +234,7 @@ class WavePainter extends CustomPainter {
     double endOfBezier = endOfBend + bezierWidth;
 
     startOfBend = (startOfBend <= anchorRadius) ? anchorRadius : startOfBend;
-    startOfBezier =
-        (startOfBezier <= anchorRadius) ? anchorRadius : startOfBezier;
+    startOfBezier = (startOfBezier <= anchorRadius) ? anchorRadius : startOfBezier;
     endOfBend = (endOfBend > size.width) ? size.width : endOfBend;
     endOfBezier = (endOfBezier > size.width) ? size.width : endOfBezier;
 
@@ -289,12 +247,9 @@ class WavePainter extends CustomPainter {
     const double maxSlideDifference = 30.0;
     double slideDifference = (sliderPosition - _previousSliderPosition).abs();
 
-    slideDifference = (slideDifference > maxSlideDifference)
-        ? maxSlideDifference
-        : slideDifference;
+    slideDifference = (slideDifference > maxSlideDifference) ? maxSlideDifference : slideDifference;
 
-    double bend =
-        lerpDouble(0.0, bendability, slideDifference / maxSlideDifference)!;
+    double bend = lerpDouble(0.0, bendability, slideDifference / maxSlideDifference)!;
     final bool moveLeft = sliderPosition < _previousSliderPosition;
     bend = moveLeft ? -bend : bend;
 
